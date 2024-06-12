@@ -1,89 +1,98 @@
-@import url("https://fonts.google.com/specimen/DM+Sans");
-     body {
-      font-family: 'DM Sans', sans-serif;
-      background-color: #fadadd;
-      /* background-color: hsl(33, 100%, 98%); */
-      color: hsl(25, 47%, 15%);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      padding: 0;
-    }
-    .container {
-      background-color: hsl(33, 100%, 98%);
-      border-radius: 10px;
-      box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
-      width: 90%;
-      max-width: 375px;
-      padding: 20px;
-    }
-    .balance{
-      margin-bottom: 20px;
-      font-style: inherit;
-      border-radius: 10px;
-      box-sizing: border-box;
-      box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
-      background-color: hsl(10, 79%, 65%);
-    } 
-    .spending{
-        margin-bottom: 20px;
-    }
-    .summary {
-      margin-bottom: 20px;
-    }
-    .balance h2{
-        margin: 0; 
-        color: white;
-        padding: 5%;
-        border: 10px;
-    } 
-    .balance p{
-        margin: 0;
-        padding: 5%;
-        color: white;
-    }
-    .summary h2 {
-      margin: 0;
-    }
-    .summary p{
-        font-size: 18px;
-        /* font-weight: 800; */
-    }
-    .summary p1{
-        display: flex;
-    }
-    .chart {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      height: 200px;
-      margin-bottom: 20px;
-    }
-    .bar {
-      width: 30px;
-      background-color: hsl(10, 79%, 65%);
-      border-radius: 5px;
-      position: relative;
-    }
-    .bar span {
-      position: absolute;
-      top: -25px;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: hsl(25, 47%, 15%);
-      color: white;
-      padding: 5px;
-      border-radius: 3px;
-      font-size: 14px;
-      display: none;
-    }
-    .bar:hover span {
-      display: block;
-    }
-    .day {
-      text-align: center;
-      margin-top: 5px;
-      color: hsl(28, 10%, 53%);
-    }
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+body {
+  font-family: "DM Sans", sans-serif;
+  background-color: #fadadd;
+  /* background-color: hsl(33, 100%, 98%); */
+  color: hsl(25, 47%, 15%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+.container {
+  background-color: hsl(33, 100%, 98%);
+  border-radius: 10px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 375px;
+  padding: 20px;
+}
+.balance {
+  margin-bottom: 20px;
+  font-style: inherit;
+  border-radius: 10px;
+  box-sizing: border-box;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+  background-color: hsl(10, 79%, 65%);
+}
+/* .image{
+    align-items: end;
+    justify-content: end;
+    flex: 1;
+} */
+.spending {
+  margin-bottom: 20px;
+}
+.summary {
+  margin-bottom: 20px;
+}
+.balance h2 {
+  margin: 0;
+  color: white;
+  padding: 5%;
+  border: 10px;
+  font-family: "DM Sans", sans-serif;
+}
+.balance p {
+  margin: 0;
+  padding: 5%;
+  color: white;
+  font-weight: 800;
+  font-family:"DM Sans", sans-serif;
+}
+.summary h2 {
+  margin: 0;
+}
+.summary p {
+  font-size: 18px;
+  /* font-weight: 800; */
+}
+.Percent {
+  align-items: end;
+  font-size: 18px;
+}
+.chart {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 200px;
+  margin-bottom: 20px;
+}
+.bar {
+  width: 30px;
+  background-color: hsl(10, 79%, 65%);
+  border-radius: 5px;
+  position: relative;
+}
+.bar span {
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: hsl(25, 47%, 15%);
+  color: white;
+  padding: 5px;
+  border-radius: 3px;
+  font-size: 14px;
+  display: none;
+}
+.bar:hover span {
+  display: block;
+}
+.day {
+  text-align: center;
+  margin-top: 5px;
+  color: hsl(28, 10%, 53%);
+}
