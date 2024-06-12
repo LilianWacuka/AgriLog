@@ -19,7 +19,7 @@ The users should be able to:
 
 ## Deploying project
 
-- [GitHub Pages](https://pages.github.com/)
+- [GitHub Pages](https://github.com/LilianWacuka/expenses-chart-component-main)
 - [Vercel](https://vercel.com/)
 - [Netlify](https://www.netlify.com/)
 
