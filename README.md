@@ -1,0 +1,38 @@
+Expenses chart component
+
+## Welcome! 👋
+
+[Frontend Mentor](https://www.frontendmentor.io) challenges help you improve your coding skills by building realistic projects.
+
+**To do this challenge, you need a decent understanding of HTML, CSS and JavaScript.**
+
+Overview
+The aim is to build out this bar chart component.
+
+The users should be able to:
+
+- View the bar chart and hover over the individual bars to see the correct amounts for each day
+- See the current day's bar highlighted in a different colour to the other bars
+- View the optimal layout for the content depending on their device's screen size
+- See hover states for all interactive elements on the page
+- See dynamically generated bars based on the data provided in the local JSON file.
+
+## Building project
+
+1. [GitHub](https://github.com/)
+
+## Deploying project
+
+- [GitHub Pages](https://pages.github.com/)
+- [Vercel](https://vercel.com/)
+- [Netlify](https://www.netlify.com/)
+
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+  - [Useful resources](#useful-resources)
+
