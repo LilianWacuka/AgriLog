@@ -2,10 +2,6 @@ Expenses chart component
 
 ## Welcome! 👋
 
-[Frontend Mentor](https://www.frontendmentor.io) challenges help you improve your coding skills by building realistic projects.
-
-**To do this challenge, you need a decent understanding of HTML, CSS and JavaScript.**
-
 Overview
 The aim is to build out this bar chart component.
 
@@ -19,7 +15,7 @@ The users should be able to:
 
 ## Building project
 
-1. [GitHub](https://github.com/)
+1. [GitHub]()git push -u origin main
 
 ## Deploying project
 
