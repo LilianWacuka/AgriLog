@@ -15,6 +15,17 @@ body,h2{
     text-align: center;
     margin-bottom: 20px;
 }
+body,p{
+    text-align: center;
+    display: inline;
+    margin: 25px;
+    /* margin-top: 5%;
+    margin-bottom: 5%; */
+    padding: 15px;
+    font-size: 20px;
+    border: 20px;
+    transform: translateX(23);
+}
 .expense-container{
     background-color:#d8bb78;
     padding: 20px;
@@ -23,7 +34,8 @@ body,h2{
     width: 300px;
     align-items: center;
     margin-top: 20px;
-    margin-left: 30px;
+    margin-left: 10%;
+    display: flex;
 }
 .expense-container input[type=text]{
     width: 250px;
