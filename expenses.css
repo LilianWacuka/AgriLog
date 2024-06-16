@@ -14,6 +14,7 @@ body,h2{
     display: inline;
     text-align: center;
     margin-bottom: 20px;
+    font-style: "DM Sans", sans-serif;
 }
 body,p{
     text-align: center;
@@ -52,10 +53,18 @@ button{
     padding: 8px;
     cursor: pointer;
     align-items: center;
-    font-weight: 800;
+    font-weight: 200;
     color: black;
     font-size: 20px;
     text-transform: uppercase;
+    font-style: "DM Sans", sans-serif;
+}
+label{
+    display: inline;
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 8px;
+    font-style: "DM Sans", sans-serif;
 }
 button:hover{
     background-color: aqua;

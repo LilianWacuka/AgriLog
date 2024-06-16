@@ -12,8 +12,13 @@
           <form id="Expenses">
             <h2>Enter amount</h2>
             <input type="text" id="amount" placeholder="Amount" required>
-            <h2>Transaction type</h2>
-            <input type="text" id="Transaction type" placeholder="Transaction type" required>
+            <!-- <input type="text" id="Transaction type" placeholder="Transaction type" required> -->
+              <label for="Transaction type">Transaction type:</label>
+              <select id="Transaction type" name="Transaction type">
+                    <option value="Deposit">Deposit</option>
+                    <option value="Withdraw">Withdraw</option>
+                </select>
+                <br>
             <button type="submit">save</button>
         </div> 
       
