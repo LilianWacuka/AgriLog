@@ -49,7 +49,7 @@ app.use(express.static(path.join(__dirname, "static")));
 
 // Define routes for serving HTML pages
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "./pages/index.html"));
+  res.sendFile(path.join(__dirname, "'pages', 'index.html'"));
 });
 
 app.get("/register", (req, res) => {
