@@ -24,9 +24,9 @@ The users should be able to:
   - [The challenge](#the-challenge)
   - [Screenshot](#screenshot)
   - [Links](#links)
+
 - [My process](#my-process)
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
   - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
-
