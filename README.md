@@ -15,8 +15,6 @@ The users should be able to:
 
 ## Building project
 
-1. [GitHub]()git push -u origin main
-
 ## Deploying project
 
 - [GitHub Pages](https://github.com/LilianWacuka/expenses-chart-component-main)
