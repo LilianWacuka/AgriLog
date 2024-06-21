@@ -24,70 +24,19 @@
             <div id="error" class="text-danger"></div>
             <div class="required info field">
                 <label for="username">Enter Username</label>
-            <input type="text" name="username" required onpaste="userpaste()" oninput="user()"  id="username" placeholder="Enter Your Username" class="form-control"> <br>
+            <input type="text" name="username" id="username" placeholder="Enter Your Username" class="form-control"> <br>
             </div>
               <div class="required info field">
             <label for="password">Enter Password</label>
-            <input type="password" name="password"  onkeypress="passLength()" required id="password" placeholder="Enter Password" class="form-control"><br>
+            <input type="password" name="password"id="password" placeholder="Enter Password" class="form-control"><br>
               </div>
-              <!-- <div class="required info field">
-              <label for="confirmPassword">Confirm Password</label>
-            <input type="password" name="confirmPassword" enterkeyhint="send" oninput="validate()" required id="confirmPassword" placeholder="Confirm Password" class="form-control"><br>
-              </div> -->
-              <input type="submit" value="Signin" class="ui positive  button m-auto d-flex">
+              <button type="submit" id="login-btn" class="ui positive button m-auto d-flex">Login</button>
               <div class="ui horizontal divider">Or</div>
-              <a href="./register.html" class="tiny ui blue button d-flex m-auto" style="justify-content:center">Signup</a>
-        </form>
-
-          <script type="text/JavaScript">
-              function user(){
-              var username=document.getElementById("username").value
-              if (username != "Mike"){
-              document.getElementById("error").innerHTML="username is not Valid"
-              document.getElementById("valid").innerHTML=" "
-              document.getElementById("ProgressInput").value=0
-              } else {
-              document.getElementById("valid").innerHTML="username is  Valid"
-              document.getElementById("error").innerHTML=""
-              }
-              return false
-              }
-
-              // function validate(){
-              // var password=document.getElementById("password").value
-              // var confirmPassword=document.getElementById("confirmPassword").value
-              // if (password != confirmPassword){
-              // document.getElementById("error").innerHTML="Passwords Do not Match"
-              // document.getElementById("valid").innerHTML=" "
-              // } else {
-              // document.getElementById("valid").innerHTML="Passwords Match"
-              // document.getElementById("error").innerHTML=""
-              // }
-              //    return false
-              // }
-
-              function passLength(){
-              var password=document.getElementById("password").value
-              number=8
-              length=password.length + 1
-              if(password.length <8){
-               document.getElementById("error").innerHTML="Passwords Must be altleast 8 characters"
-               passlength=number-length
-               document.getElementById("length").innerHTML=passlength
-               document.getElementById("valid").innerHTML=" "
-               } else{
-               document.getElementById("valid").innerHTML="Password is strong"
-               document.getElementById("error").innerHTML=""
-               }
-              }
-
-              function userpaste(){
-              alert("Paste is not allowed")
-              document.getElementById("username").value="Not allowed "
-              }
-          </script>
+              <a href="/register" class="tiny ui blue button d-flex m-auto" style="justify-content:center">Signup</a>
+        </form>          
     </div>
   </div>
-  <script src="js/script.js"></script>
+
+  <script src="js/index.js"></script>
 </body>
 </html>

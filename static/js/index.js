@@ -1,27 +1,28 @@
-const e = require("express");
+const loginBtn = document.getElementById("login-btn");
 
-const submitBtn = document.getElementById("login");
-
-submitBtn.addEventListener("click", async (e) => {
+loginBtn.addEventListener("click", async (e) => {
   e.preventDefault();
 
-  const Username = document.getElementById("user_name").value;
+  const username = document.getElementById("username").value;
   const password = document.getElementById("password").value;
+
+  console.log(username, password)
 
   const response = await fetch("api/login", {
     method: "POST",
-    header: {
-      "content-Type": "application/json",
+    headers: {
+      "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      Username: user_name,
-      Password: password,
+      username,
+      password,
     }),
   });
-  const result = await response.json();
-  if (response.ok) {
-    window.href.redirect("/dashboard");
-  } else {
-    alert("invalid username or password");
-  }
+
+  const result = response.json()
+  console.log(result)
+if(!result) return alert("couldn't log in") 
+
+  alert("login successfully")
+  window.location.href = "/"
 });

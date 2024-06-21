@@ -1,32 +1,29 @@
+const submitBtn = document.getElementById("submit-btn");
 
-
-const submitBtn = document.getElementById("btnRegister");
-
-submitBtn.addEventListener('click', async (e) =>{
+submitBtn.addEventListener('click', async (e) => {
   e.preventDefault()
 
   const userName = document.getElementById("user_name").value;
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
   const fullName = document.getElementById("full_name").value;
-  
-  const response = await fetch("/register", {
+
+  const response = await fetch("api/register", {
     method: "POST",
-    header: {
+    headers: {
       "content-Type": "application/json",
     },
     body: JSON.stringify({
       username: userName,
-      password: password,
+      password,
       email: email,
-      fullname: fullName,
+      full_name: fullName,
     }),
   });
-const result = await response.json()
-if(response.ok){
-  window.location.href('/index')
-}else {
-  alert('Registration failed')
-}
+  const result = await response.json()
+  
+  if(!response.ok) return alert("Registration failed");
+
+  alert(result)
+  window.location.href = "/login"
 })
- 

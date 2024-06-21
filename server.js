@@ -1,4 +1,3 @@
-// server.js
 const express = require("express");
 const fs = require("fs");
 const session = require("express-session");
@@ -6,11 +5,12 @@ const bcrypt = require("bcryptjs");
 const bodyParser = require("body-parser");
 const mysql = require("mysql2");
 const { check, validationResult } = require("express-validator");
-const app = express();
 const path = require("path");
 const dotenv = require("dotenv");
 
 dotenv.config();
+
+const app = express();
 
 // Configure session middleware
 app.use(
@@ -20,6 +20,7 @@ app.use(
     saveUninitialized: true,
   })
 );
+console.log(process.env.HOST)
 
 // Create MySQL connection
 const connection = mysql.createConnection({
@@ -44,19 +45,28 @@ app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// Authenctication Middleware
+function isAuthenticated(req, res, next) {
+  if(req.session.user) {
+    return next();
+  }
+  // return window.location = '/login'
+  res.sendFile(path.join(__dirname, "./pages/register.html"));
+}
+
 // Serve static files
 app.use(express.static(path.join(__dirname, "static")));
 
 // Define routes for serving HTML pages
-app.get("/", (req, res) => {
+app.get("/register", (req, res) => {
   res.sendFile(path.join(__dirname, "./pages/register.html"));
 });
-//route for register
-app.get("/index", (req, res) => {
+// Route for index page
+app.get("/login", (req, res) => {
   res.sendFile(path.join(__dirname, "./pages/index.html"));
 });
-//route for dashboard
-app.get("/dashboard", (req, res) => {
+// Route for dashboard
+app.get("/",isAuthenticated ,(req, res) => {
   res.sendFile(path.join(__dirname, "./pages/dashboard.html"));
 });
 
@@ -88,26 +98,26 @@ const User = {
 
 // Registration route
 app.post(
-  "/register",
+  "/api/register",
   [
     check("email").isEmail().withMessage("Invalid email address"),
     check("username")
       .isAlphanumeric()
       .withMessage("Username must be alphanumeric"),
-    check("email").custom(async (value) => {
+    check("email").custom((value) => {
       return new Promise((resolve, reject) => {
         User.getUserByEmail(value, (err, user) => {
-          if (err) reject(err);
-          if (user.length > 0) reject(new Error("Email already exists"));
+          if (err) return reject(err);
+          if (user.length > 0) return reject(new Error("Email already exists"));
           resolve(true);
         });
       });
     }),
-    check("username").custom(async (value) => {
+    check("user_name").custom((value) => {
       return new Promise((resolve, reject) => {
         User.getUserByUsername(value, (err, user) => {
-          if (err) reject(err);
-          if (user.length > 0) reject(new Error("Username already exists"));
+          if (err) return reject(err);
+          if (user.length > 0) return reject(new Error("Username already exists"));
           resolve(true);
         });
       });
@@ -120,61 +130,66 @@ app.post(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const saltRounds = 10;
-    const hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
+    try {
+      const saltRounds = 10;
+      const hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
+      console.log (req.body)
 
-    const newUser = {
-      email: req.body.email,
-      username: req.body.username,
-      password: hashedPassword,
-      full_name: req.body.full_name,
-    };
+      const newUser = {
+        email: req.body.email,
+        username: req.body.username,
+        password: hashedPassword,
+        full_name: req.body.full_name,
+      };
 
-    User.createUser(newUser, (error, results) => {
-      if (error) {
-        console.error("Error inserting user:", error.message);
-        return res.status(500).json({ error: error.message });
-      }
-      console.log("User created successfully with id:", results.insertId);
-      res.sendFile(__dirname + "./pages/index.html");
-    });
+      User.createUser(newUser, (error, results) => {
+        if (error) {
+          console.error("Error inserting user:", error.message);
+          return res.status(500).json({ error: error.message });
+        }
+        console.log("User created successfully with id:", results.insertId);
+        res.status(200).json("User successfully registered")
+      });
+    } catch (error) {
+      console.error("Error during user registration:", error.message);
+      res.status(500).json({ error: "Internal server error" });
+    }
   }
 );
 
 // Login route
-app.post("/index", (req, res) => {
+app.post("/api/login", (req, res) => {
   const { username, password } = req.body;
+  console.log(req.body)
 
   User.getUserByUsername(username, (err, results) => {
     if (err) {
       console.error("Error fetching user:", err.message);
-      return res.status(500).send("An error occurred");
+      return res.status(500).json({ error: "An error occurred" });
     }
     if (results.length === 0) {
       console.error("Invalid username or password");
-      return res.status(401).send("Invalid username or password");
+      return res.status(401).json({ error: "Invalid username or password" });
     }
 
     const user = results[0];
-    bcrypt.compare(password, user.password, (err, isMatch) => {
-      if (err) {
-        console.error("Error comparing passwords:", err.message);
-        return res.status(500).send("An error occurred");
-      }
-      if (isMatch) {
+    console.log(user);
+    const isok= bcrypt.compare(password, user.password)
+  
+   
+      if (isok) {
         req.session.user = user;
         console.log("User logged in successfully:", user.username);
-        res.redirect("/dashboard");
+        return res.status(200).json({ message: "Login successful" });
       } else {
         console.error("Invalid username or password");
-        res.status(401).send("Invalid username or password");
+        return res.status(401).json({ error: "Invalid username or password" });
       }
     });
   });
-});
 
 // Dashboard route
-app.get("/dashboard",(req, res) => {
+app.get("/api/dashboard", (req, res) => {
   if (!req.session.user) {
     return res.status(401).send("You must log in first");
   }
