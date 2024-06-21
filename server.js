@@ -49,11 +49,11 @@ app.use(express.static(path.join(__dirname, "static")));
 
 // Define routes for serving HTML pages
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "./pages/index.html"));
+  res.sendFile(path.join(__dirname, "./pages/register.html"));
 });
 //route for register
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "./pages/register.html"));
+app.get("/index", (req, res) => {
+  res.sendFile(path.join(__dirname, "./pages/index.html"));
 });
 //route for dashboard
 app.get("/dashboard", (req, res) => {
@@ -136,13 +136,13 @@ app.post(
         return res.status(500).json({ error: error.message });
       }
       console.log("User created successfully with id:", results.insertId);
-      res.status(201).redirect("/login");
+      res.sendFile(__dirname + "./pages/index.html");
     });
   }
 );
 
 // Login route
-app.post("/login", (req, res) => {
+app.post("/index", (req, res) => {
   const { username, password } = req.body;
 
   User.getUserByUsername(username, (err, results) => {

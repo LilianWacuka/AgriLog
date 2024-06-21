@@ -1,6 +1,6 @@
-const e = require("express");
 
-const submitBtn = document.getElementById('register');
+
+const submitBtn = document.getElementById("btnRegister");
 
 submitBtn.addEventListener('click', async (e) =>{
   e.preventDefault()
@@ -9,21 +9,22 @@ submitBtn.addEventListener('click', async (e) =>{
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
   const fullName = document.getElementById("full_name").value;
-  const response = await fetch("api/register", {
+  
+  const response = await fetch("/register", {
     method: "POST",
     header: {
       "content-Type": "application/json",
     },
     body: JSON.stringify({
-      Username: user_name,
-      Password: password,
+      username: userName,
+      password: password,
       email: email,
-      Fullname: full_name,
+      fullname: fullName,
     }),
   });
 const result = await response.json()
 if(response.ok){
-  window.location.href('/login')
+  window.location.href('/index')
 }else {
   alert('Registration failed')
 }
